@@ -1,0 +1,27 @@
+[{
+	"UserInfo": [{
+			"userId": 1,
+			"id": 1,
+			"type": "dev",
+			"location": "noida"
+		},
+		{
+			"userId": 1,
+			"id": 2,
+			"type": "test",
+			"location": "okala"
+		},
+		{
+			"userId": 1,
+			"id": 3,
+			"type": "client",
+			"location": "huda"
+		},
+		{
+			"userId": 1,
+			"id": 4,
+			"type": "dev",
+			"location": "alpha"
+		}
+	]
+}]

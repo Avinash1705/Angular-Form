@@ -1,0 +1,19 @@
+<p>button works!</p>
+
+<div>
+  <div>
+      userId: <input [(ngModel)] = "userId" type="text">
+      </div>
+    ID: <input [(ngModel)] ="id" type="text" >
+ 
+    
+  </div>
+  <div>
+      type: <input [(ngModel)] ="type" type="text">
+  </div>
+ location: <input  [(ngModel)]="location" type="text" >
+
+ <br>
+ <br>
+ <button  type="submit" (click) ='add()'>Add</button>
+<button  type="submit" (click) ='addrow()' [(ngModel)]="disablebtn"  >Addrow</button>

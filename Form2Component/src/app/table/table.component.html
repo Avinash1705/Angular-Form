@@ -1,0 +1,23 @@
+<p>table works!</p>
+<div class="search-hero">
+   </div>
+  <table>
+    <tr>
+      <td>User id</td>
+      <td>id </td>
+      <td>Type</td>
+      <td>Location</td>
+    </tr>
+    <tr *ngFor="let user of UserInfo  let i=index ">
+     <td >{{user.userId}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.type}}</td> 
+      <td>{{user.location}}</td>
+     <td><button  type="button" (click)="UpdateData(i)" [innerHtml]='(i==holdindex)?"Update":"Edit"'    ></button></td>
+      <td><button type="button" (click)="DeleteData(i)">Delete</button></td>  
+    </tr>
+ </table>
+
+ 
+
+ 
