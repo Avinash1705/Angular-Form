@@ -64,7 +64,7 @@ this.btncont.location=this.location;
 
     }
     else{
-   
+      alert("checking for git");
       alert("add Row Not Working");
     }
 
