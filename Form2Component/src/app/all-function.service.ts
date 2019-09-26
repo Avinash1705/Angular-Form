@@ -14,20 +14,21 @@ export class AllFunctionService {
   editindex:any;
   type:any;editData:any;userId:any;location:any;id:any;value:any;
   UserInfo : object[];
-  searchTerm:any;
+  
   itemsCopy:any;
   searchText:any;
   copyArr:any;
   serviceSubject:any = new Subject();
   serviceSubjectbtn:any = new Subject();
-  searchFilter(){
-    this.searchTerm=this.searchText;
-    let term = this.searchTerm;
-    this.UserInfo = this.itemsCopy.filter((tag)=> {
-      //filter acc to location
-      return tag.location.indexOf(term) >= 0;
-    }); 
-   }  
+  serviceFilt:any=new Subject();
+  // searchFilter(){
+  //   this.searchTerm=this.searchText;
+  //   let term = this.searchTerm;
+  //   this.UserInfo = this.itemsCopy.filter((tag)=> {
+  //     //filter acc to location
+  //     return tag.location.indexOf(term) >= 0;
+  //   }); 
+  //  }  
 //    EmptyFieldOnClick(){
 //     //  alert("Empty working")
 //      //Emplty filed after onclick
@@ -46,7 +47,7 @@ export class AllFunctionService {
     this.editindex=-1;
     this.UserInfo.splice(this.holdindex,1,{userId:this.userId,id:this.id,type:this.type,location:this.location});
     // console.log(this.UserInfo);
-      
+
    
    }
    Addrow(){
@@ -65,9 +66,8 @@ export class AllFunctionService {
     let res=data[0];
     this.UserInfo=res['UserInfo'];
     this.editindex=this.holdindex;
-    // this.itemsCopy = this.UserInfo;
+    this.itemsCopy = this.UserInfo;
     // console.log(this.UserInfo);
-    
     })
   }
   
@@ -77,6 +77,9 @@ export class AllFunctionService {
 subscribeData(data){
   console.log("innnn")
   this.serviceSubject.next(data);
+}
+subscribeDataFilt(filtData){
+  this.serviceFilt.next(filtData)
 }
 subscribeDatabtn(databtn){
   // console.log("Databtn")

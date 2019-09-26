@@ -7,6 +7,7 @@ import { TableComponent } from './table/table.component';
 import { ButtonComponent } from './button/button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Pipe, PipeTransform } from '@angular/core'; 
 
 @NgModule({
   declarations: [

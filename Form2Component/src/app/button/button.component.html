@@ -1,19 +1,18 @@
 <p>button works!</p>
-
 <div>
   <div>
-      userId: <input [(ngModel)] = "userId" type="text">
-      </div>
-    ID: <input [(ngModel)] ="id" type="text" >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  searching any" (ngModelChange) = 'searchFilter()'>
+    <button  type="submit" (click) ='searchForInput()'>Search</button>
  
-    
-  </div>
   <div>
+      userId: <input [(ngModel)] = "userId" type="text">
+      ID: <input [(ngModel)] ="id" type="text" >
       type: <input [(ngModel)] ="type" type="text">
+      location: <input  [(ngModel)]="location" type="text" >
   </div>
- location: <input  [(ngModel)]="location" type="text" >
-
- <br>
- <br>
+    
+</div>
  <button  type="submit" (click) ='add()'>Add</button>
-<button  type="submit" (click) ='addrow()' [(ngModel)]="disablebtn"  >Addrow</button>
+<button  type="submit" (click) ='addrow()'>Addrow</button>
+</div>
+
