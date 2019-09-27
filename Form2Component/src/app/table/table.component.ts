@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   Disablebtn:any;
   //  subject:any;
   holdindex:any=null;
+  editindexnew:any;
   userActivated:any;
 private activateSub:Subscription;
   UserInfo:any;
@@ -27,24 +28,26 @@ private activateSub:Subscription;
     // this.tableCont.location=this.location;
     // this.tableCont.userId=this.userId;
     console.log("Cons",this.tableCont.type);
-    console.log("term",term,"btnUSerInfo",this.btncont.UserInfo,"itemCopy",this.btncont.itemsCopy);
-    this.btncont.UserInfo = this.btncont.itemsCopy.filter((tag)=> {
-      //filter acc to location
-      return tag.location.indexOf(term) >= 0;
-    }); 
+    // console.log("term",term,"btnUSerInfo",this.btncont.UserInfo,"itemCopy",this.btncont.itemsCopy);
+    // this.btncont.UserInfo = this.btncont.itemsCopy.filter((tag)=> {
+    //   //filter acc to location
+    //   return tag.location.indexOf(term) >= 0;
+    // }); 
     
 }
   
    UpdateData(index: string | number){
      
     this.holdindex=index;
-    
+    this.tableCont.holdindex = index;
+    this.editindexnew=this.holdindex;
     this.tableCont.editData=this.UserInfo;
     this.tableCont.holdindex = this.holdindex;
-     this.editData=this.UserInfo[this.holdindex];
-    // console.log("table editdata",this.UserInfo);
-
+    this.editData=this.UserInfo[this.holdindex];
+    // console.log("table editdata",this.UserInfo,this.editData ,"Editdata shorted");
+    
     //data send to other component using subscribe
+    console.log(this.UserInfo)
       this.tableCont.subscribeData(this.editData);
       this.tableCont.subscribeDatabtn(this.UserInfo);
 //update all service input var
@@ -54,12 +57,10 @@ private activateSub:Subscription;
     this.tableCont.type=this.editData.type;
     // console.log( this.tableCont.type);
     // console.log(this.holdindex);
-    
-    
     // this.editData=this.dataFilt;
-    // console.log("Filtdata in tab",this.editData);
-    
-    
+    // console.log("Chosing pariticular row in tab",this.editData);
+      
+      
      }
      DeleteData(){
       //  console.log(this.editData)
@@ -72,6 +73,10 @@ private activateSub:Subscription;
         this.tableCont.userId=null;
         this.tableCont.location=null;
      }
+   
+   
+      
+   
 
     
    ngOnInit() {
@@ -79,24 +84,34 @@ private activateSub:Subscription;
      
     // this.editData=this.tableCont.UserInfo;
    this.activateSub= this.getJson().subscribe(data=>{
+
+    console.log("innnnnnner")
      this.userActivated=data;
       let res=data[0];
       this.UserInfo=res['UserInfo'];
-      this.itemsCopy = this.UserInfo;
-      console.log(this.UserInfo);
+      this.tableCont.itemsCopy = this.UserInfo;
+      // console.log("tableCOnt",this.tableCont.itemsCopy,"All Data");
       })
+
+
+
       this.tableCont.serviceFilt.subscribe(btnData=>{
-        // console.log("in",btnData);
-        this.location=btnData.location;
-      this.id=btnData.id;
-      this.userId=btnData.userId;
-      this.type=btnData.type;
-      console.log("Working");
-      
+        let term=btnData;
+        // this.searchFilter();
+        // alert("tbtab")
+        console.log("term in table",term);
+      //   this.location=btnData.location;
+      // this.id=btnData.id;
+      // this.userId=btnData.userId;
+      // this.type=btnData.type;
+      console.log("term",term,"btnUSerInfo",this.tableCont.UserInfo,"itemCopy",this.tableCont.itemsCopy);
+      this.UserInfo = this.tableCont.itemsCopy.filter((tag)=> {
+        //filter acc to location
+        return tag.location.indexOf(term) >= 0;
+      }); 
+
     })
-      
-  
-    }
+   }
     ngOnDestroy():void{
       this.activateSub.unsubscribe();
     }

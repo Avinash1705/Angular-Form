@@ -8,16 +8,19 @@ import { Subject } from 'rxjs';
 })
 export class AllFunctionService {
   
+
+  
   title = 'form';
   public url='assets/user.json';
   holdindex:any;
   editindex:any;
+  editindexnew:any;
   type:any;editData:any;userId:any;location:any;id:any;value:any;
   UserInfo : object[];
-  
   itemsCopy:any;
   searchText:any;
   copyArr:any;
+  newUp:boolean;
   serviceSubject:any = new Subject();
   serviceSubjectbtn:any = new Subject();
   serviceFilt:any=new Subject();
@@ -37,6 +40,7 @@ export class AllFunctionService {
 // this.userId="";
 // this.location="";
 //    }
+
  
   Add(){
     // console.log(this.editData);
@@ -44,16 +48,19 @@ export class AllFunctionService {
     // this.id=id;
     // this.type=type;
     // this.location=location;
-    this.editindex=-1;
+    // this.editindexnew=-1;
     this.UserInfo.splice(this.holdindex,1,{userId:this.userId,id:this.id,type:this.type,location:this.location});
-    // console.log(this.UserInfo);
-
-   
+    // console.log("Add in service file",this.UserInfo ,"Full obj");
+    //console.log("userId:",this.userId,"id:",this.id,"type:",this.type,"location:",this.location);
+    //console.log("particular row update",this.UserInfo.splice(this.holdindex,1,{userId:this.userId,id:this.id,type:this.type,location:this.location}));
+  
+    
    }
    Addrow(){
     
      this.UserInfo.splice(this.UserInfo.length,0,{userId:this.userId,id:this.id,type:this.type,location:this.location});
-      console.log(this.UserInfo);
+      // console.log(this.UserInfo);
+      
      }
   // DeleteData(index: number){
   //  this.UserInfo.splice(index, 1);
@@ -69,20 +76,22 @@ export class AllFunctionService {
     this.itemsCopy = this.UserInfo;
     // console.log(this.UserInfo);
     })
+    //undef holdindex
   }
   
   getJson(){
     return this.http.get(this.url);
  }
 subscribeData(data){
-  console.log("innnn")
+  // console.log("innnn")
   this.serviceSubject.next(data);
 }
 subscribeDataFilt(filtData){
-  this.serviceFilt.next(filtData)
+  
+this.serviceFilt.next(filtData)
 }
 subscribeDatabtn(databtn){
-  // console.log("Databtn")
+  //  console.log("Databtn",databtn)
   this.serviceSubjectbtn.next(databtn);
 }
    ngOnInit(){

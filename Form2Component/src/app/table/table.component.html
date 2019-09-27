@@ -13,7 +13,7 @@
       <td>{{user.id}}</td>
       <td>{{user.type}}</td> 
       <td>{{user.location}}</td>
-     <td><button  type="button" (click)="UpdateData(i)" [innerHtml]='(i==holdindex)?"Update":"Edit"' ></button></td>
+     <td><button  type="button" (click)="UpdateData(i)" [innerHtml]='(i==tableCont.holdindex)?"Update":"Edit"' ></button></td>
       <td><button type="button" (click)="DeleteData(i)">Delete</button></td>  
     </tr>
  </table>

@@ -1,7 +1,7 @@
 <p>button works!</p>
 <div>
   <div>
-    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  searching any" (ngModelChange) = 'searchFilter()'>
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  searching any" (ngModelChange) = 'searchFilterbtn  ()'>
     <button  type="submit" (click) ='searchForInput()'>Search</button>
  
   <div>
@@ -10,7 +10,6 @@
       type: <input [(ngModel)] ="type" type="text">
       location: <input  [(ngModel)]="location" type="text" >
   </div>
-    
 </div>
  <button  type="submit" (click) ='add()'>Add</button>
 <button  type="submit" (click) ='addrow()'>Addrow</button>
